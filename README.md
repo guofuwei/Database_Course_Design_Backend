@@ -1,0 +1,2 @@
+# Database_Course_Design_BE
+Database_Course_Design_BE 是一个基于Django的Web后端项目，作为Database_Course_Design_FE的后端
