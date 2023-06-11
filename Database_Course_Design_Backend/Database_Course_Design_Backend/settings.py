@@ -35,6 +35,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "student",
+    "teacher",
+    "course",
+    "hard_resource"
 ]
 
 MIDDLEWARE = [
@@ -70,16 +74,17 @@ WSGI_APPLICATION = "Database_Course_Design_Backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# 数据库
 DATABASES = {
-    # 'default':
-    #     {
-    #         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-    #         'NAME': 'runoob',  # 数据库名称
-    #         'HOST': '127.0.0.1',  # 数据库地址，本机 ip 地址 127.0.0.1
-    #         'PORT': 3306,  # 端口
-    #         'USER': 'root',  # 数据库用户名
-    #         'PASSWORD': '123456',  # 数据库密码
-    #     }
+    'default':
+        {
+            'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+            'NAME': 'database_course',  # 数据库名称
+            'HOST': '124.71.145.15',
+            'PORT': 33060,  # 端口
+            'USER': 'database_course',  # 数据库用户名
+            'PASSWORD': 'database_course',  # 数据库密码
+        }
 }
 
 # Password validation
