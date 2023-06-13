@@ -25,4 +25,4 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}  # 将服务器用户名存储在GitHub Secrets中
         password: ${{ secrets.SERVER_PASSWORD }}  # 将服务器密码存储在GitHub Secrets中
         source: ./Database_Course_Design_Backend  # 替换为你的Django工程目录
-        target: /path/to/deploy  # 替换为你的服务器上用于部署的目录路径
+        target: /home/hanshan/release/database_course  # 替换为你的服务器上用于部署的目录路径
