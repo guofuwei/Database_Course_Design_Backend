@@ -16,6 +16,9 @@ def get_all(request):
         return JsonResponse({"code": "400", "msg": "请求方法错误"})
     course = Course.objects.all()
     res = make_res(course, "course")
+    for i in res:
+        course_id = i.get("id")
+        i["resourceIds"] = list(RC.objects.filter(course_id=course_id).values_list("resource_id", flat=True))
     return JsonResponse({"code": "200", "data": res})
 
 
