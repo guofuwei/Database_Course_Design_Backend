@@ -108,5 +108,6 @@ def select_course(request):
         if len(res) != 0:
             return JsonResponse({"code": "403", "msg": "该课程已经选过了"})
         SC.objects.create(course_id=course_id, student_id=student_id)
+        return JsonResponse({"code": "200", "msg": "ok"})
     except Exception:
         return JsonResponse({"code": "402", "msg": "数据库错误"})
