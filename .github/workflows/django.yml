@@ -1,0 +1,29 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  # 替换为你要使用的Python版本
+
+    - name: 发布上云
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4 # 使用 SFTP 协议上传到云
+      with:
+        username: 'hanshan'
+        server: '${{ secrets.SERVER_HOST }}'
+        ssh_private_key: '${{ secrets.SERVER_PRIVATE_KEY }}'
+        local_path: 'Database_Course_Design_Backend/*'
+        remote_path: 'release/database_course'
+        args: "-o ConnectTimeout=5"
