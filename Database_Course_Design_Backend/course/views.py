@@ -31,10 +31,10 @@ def add(request):
     body = json.loads(body)
     # 获取body中的参数
     course_name = body.get("courseName")
-    max_selected_num = body.get("maxSelectedNum")
+    max_select_num = body.get("maxSelectNum")
     resource_ids = body.get("resourceIds")
     # 当有参数为空，返回错误
-    if body is None or max_selected_num is None or resource_ids is None:
+    if body is None or max_select_num is None or resource_ids is None:
         return JsonResponse({"code": "401", "msg": "参数错误"})
 
     # 事务
@@ -42,7 +42,7 @@ def add(request):
     try:
         with transaction.atomic():
             # 新建课程
-            newcourse = Course.objects.create(course_name=course_name, max_selected_num=max_selected_num)
+            newcourse = Course.objects.create(course_name=course_name, max_select_num=max_select_num)
             # 在RC表中添加记录
             for resource_id in resource_ids:
                 RC.objects.create(course_id=newcourse.id, resource_id=resource_id)
