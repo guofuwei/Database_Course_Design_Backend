@@ -1,4 +1,6 @@
 from django.http import JsonResponse
+
+from course.models import SC
 from student.models import Student
 import json
 from utils.utils import make_res
@@ -14,6 +16,10 @@ def get_all(request):
         return JsonResponse({"code": "400", "msg": "请求方法错误"})
     student = Student.objects.all()
     res = make_res(student, "student")
+    # 将选的课程id加入到返回的json中
+    for i in res:
+        student_id = i.get("id")
+        i["courseIds"] = list(SC.objects.filter(student_id=student_id).values_list("course_id", flat=True))
     return JsonResponse({"code": "200", "data": res})
 
 
