@@ -18,11 +18,12 @@ jobs:
       with:
         python-version: 3.8  # 替换为你要使用的Python版本
 
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@v2
+    - name: 发布上云
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4 # 使用 SFTP 协议上传到云
       with:
-        server: ${{ secrets.SERVER_IP }}  # 将服务器IP地址存储在GitHub Secrets中
-        username: ${{ secrets.SERVER_USERNAME }}  # 将服务器用户名存储在GitHub Secrets中
-        password: ${{ secrets.SERVER_PASSWORD }}  # 将服务器密码存储在GitHub Secrets中
-        source: ./Database_Course_Design_Backend  # 替换为你的Django工程目录
-        target: /home/hanshan/release/database_course  # 替换为你的服务器上用于部署的目录路径
+        username: 'hanshan'
+        server: '${{ secrets.SERVER_HOST }}'
+        ssh_private_key: '${{ secrets.SERVER_PRIVATE_KEY }}'
+        local_path: 'Database_Course_Design_Backend/*'
+        remote_path: 'release/database_course'
+        args: "-o ConnectTimeout=5"
