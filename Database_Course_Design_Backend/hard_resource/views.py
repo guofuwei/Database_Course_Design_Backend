@@ -17,6 +17,24 @@ def get_all(request):
     return JsonResponse({"code": "200", "data": res})
 
 
+def get_by_filter(request):
+    if request.method != "GET":
+        return JsonResponse({"code": "400", "msg": "请求方法错误"})
+    # 获取get params
+    this_id = request.GET.get("id")
+    resource_name = request.GET.get("resourceName")
+    # 用上述不为空的值构建filter字典
+    filter_dict = {}
+    if this_id is not None:
+        filter_dict["id"] = this_id
+    if resource_name is not None:
+        filter_dict["resource_name"] = resource_name
+    # 用filter字典查询
+    hard_resource = HardResource.objects.filter(**filter_dict)
+    res = make_res(hard_resource, "hard_resource")
+    return JsonResponse({"code": "200", "data": res})
+
+
 def add(request):
     if request.method != "POST":
         return JsonResponse({"code": "400", "msg": "请求方法错误"})
