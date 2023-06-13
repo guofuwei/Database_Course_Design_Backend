@@ -6,8 +6,7 @@ from hard_resource.models import HardResource
 class Course(models.Model):
     id = models.AutoField(primary_key=True)
     course_name = models.CharField(max_length=100)
-    resource_num = models.IntegerField()
-    max_selected_num = models.IntegerField(default=100)
+    max_selected_num = models.IntegerField()
     selected_num = models.IntegerField(default=0)
 
 
