@@ -13,7 +13,7 @@ def get_all(request):
     if request.method != "GET":
         return JsonResponse({"code": "400", "msg": "请求方法错误"})
     teacher = Teacher.objects.all()
-    res = make_res(teacher)
+    res = make_res(teacher, "teacher")
     return JsonResponse({"code": "200", "data": res})
 
 

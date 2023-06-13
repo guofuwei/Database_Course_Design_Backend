@@ -13,7 +13,7 @@ def get_all(request):
     if request.method != "GET":
         return JsonResponse({"code": "400", "msg": "请求方法错误"})
     student = Student.objects.all()
-    res = make_res(student)
+    res = make_res(student, "student")
     return JsonResponse({"code": "200", "data": res})
 
 
@@ -46,7 +46,7 @@ def get_by_filter(request):
         filter_dict["telephone"] = telephone
     # 用filter字典查询
     student = Student.objects.filter(**filter_dict)
-    res = make_res(student)
+    res = make_res(student, "student")
     return JsonResponse({"code": "200", "data": res})
 
 

@@ -13,7 +13,7 @@ def get_all(request):
     if request.method != "GET":
         return JsonResponse({"code": "400", "msg": "请求方法错误"})
     hard_resource = HardResource.objects.all()
-    res = make_res(hard_resource)
+    res = make_res(hard_resource, "hard_resource")
     return JsonResponse({"code": "200", "data": res})
 
 
