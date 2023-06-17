@@ -82,10 +82,10 @@ DATABASES = {
         {
             'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
             'NAME': 'database_course',  # 数据库名称
-            'HOST': '124.71.145.15',
+            'HOST': 'xxxxx', # 数据库地址，本地的话就是localhost
             'PORT': 3306,  # 端口
-            'USER': 'database_course',  # 数据库用户名
-            'PASSWORD': 'database_course',  # 数据库密码
+            'USER': 'xxxxx',  # 数据库用户名
+            'PASSWORD': 'xxxxx',  # 数据库密码
         }
 }
 
